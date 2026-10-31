@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Product List View -->
+    <record id="view_subscription_product_list" model="ir.ui.view">
+        <field name="name">subscription.product.list</field>
+        <field name="model">subscription.product</field>
+        <field name="arch" type="xml">
+            <list string="Products">
+                <field name="name"/>
+                <field name="price"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Product Form View -->
+    <record id="view_subscription_product_form" model="ir.ui.view">
+        <field name="name">subscription.product.form</field>
+        <field name="model">subscription.product</field>
+        <field name="arch" type="xml">
+            <form string="Product">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="price"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Product Action -->
+    <record id="action_subscription_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">subscription.product</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Product Menu -->
+    <menuitem
+        id="menu_subscription_root"
+        name="Subscription Management"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_subscription_products"
+        name="Products"
+        parent="menu_subscription_root"
+        action="action_subscription_product"
+        sequence="1"
+    />
+
+</odoo>
